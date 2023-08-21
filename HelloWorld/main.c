@@ -1,3 +1,5 @@
+#define __STDC_LIB_EXT1__ 1
+
 #include <stdio.h>
 #include <stdlib.h>
 //#include <locale.h>
@@ -40,14 +42,17 @@ int main(int argc, char *argv[]) {
 	char ch = 'R';
 	printf("ch = %c\n", ch);
 	
-	printf("Введите ваше имя: ");
 	char name[31]; // max 30 char in string (last '\0')
-	scanf("%s", name);
-	
-	
-	printf("Введите ваш возраст: ");
 	int age;
-	scanf("%d", &age);
+	
+	/*printf("Введите ваше имя: ");
+	scanf("%s", name);
+	printf("Введите ваш возраст: ");
+	scanf("%d", &age);*/
+	printf("Введите ваше имя и возраст: ");
+	//scanf("%30s%d", name, &age); // non-secured
+	scanf_s("%30s %d", name, sizeof(name), &age); // add -std=c11
+	
 	
 	//char* name = "Сергей";
 	printf("Привет, %s - %d!\n", name, age);
