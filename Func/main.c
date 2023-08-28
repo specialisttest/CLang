@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 
 #include <math.h>
 
@@ -48,6 +49,60 @@ double bank_round(double x) {
 int factorial(int n) {
 	if (n == 0) return 1;
 	else return n*factorial(n-1);
+}
+
+double average2(int a, int b){
+	return (a+b) / 2.0;
+}
+
+double averagem(int m_size, int m[]){
+	int summa = 0;
+	for(int i=0; i < m_size; i++)
+		summa += m[i];
+		
+	return (double)summa / m_size;
+}
+
+double averagen(int n, ...){
+	int summa = 0;
+	va_list params;
+	va_start(params, n);
+	for(int i=0; i < n; i++) {
+		int k = va_arg(params, int);
+		summa += k;
+	}
+	va_end(params);
+	
+	return (double)summa / n;
+}
+
+int compare_int(const void* a, const void* b ) {
+    int arg1 = *(const int*)a;
+    int arg2 = *(const int*)b;
+ 
+    if (arg1 < arg2) return -1;
+    if (arg1 > arg2) return 1;
+    return 0;
+}
+
+
+double mediana(int n, ...) {
+	int arr[n]; // VLA
+	va_list params;
+	va_start(params, n);
+	for(int i=0; i < n; i++)
+		arr[i] = va_arg(params, int);
+	va_end(params);
+
+	double median;
+	qsort(arr, n, sizeof(int), compare_int);
+	if (n % 2 == 1)
+		median = arr[n / 2];
+	else
+		median = (arr[n / 2 - 1] + arr[n / 2]) / 2.0;
+		
+	return median;
+	
 }
 
 int main(int argc, char *argv[]) {
@@ -102,6 +157,14 @@ int main(int argc, char *argv[]) {
 	}
 	
 	printf("6! = %d\n", factorial(6));
+	printf("average(10, 11) = %.2f\n", average(10,11));
+	
+	int m[] = {10, 11, 12, 13};
+	printf("average(10, 11, 12, 13) = %.2f\n", averagem(4, m));
+	printf("averagen(18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12) = %.2f\n", 
+		averagen(15, 18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12));
+	printf("mediana(18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12) = %.2f\n", 
+		mediana(15, 18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12));
 	
 	return 0;
 }
