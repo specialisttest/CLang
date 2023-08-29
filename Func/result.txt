@@ -1,0 +1,36 @@
+Hello
+Hello
+Hello, Sergey
+Hello, Andrey - 45
+10.500000
+11.000000
+10.000000
+11.000000
+round -1.1 : -1.0
+round -1.9 : -2.0
+round -1.5 : -2.0
+round -2.5 : -3.0
+round 0.3 : 0.0
+bank_round 0.3 : 0.0
+bank_round 1.1 : 1.0
+bank_round 1.9 : 2.0
+bank_round 1.5 : 2.0
+bank_round 2.5 : 2.0
+bank_round 2.9 : 3.0
+bank_round -1.1 : -1.0
+bank_round -1.9 : -2.0
+bank_round -1.5 : -2.0
+bank_round -2.5 : -2.0
+round(1.1) = 1.0
+round(1.5) = 2.0
+round(1.9) = 2.0
+round(2.5) = 3.0
+test1 a: 11
+main1 a: 10
+test2 a: 11
+main2 a: 11
+6! = 720
+average(10, 11) = 10.50
+average(10, 11, 12, 13) = 11.50
+averagen(18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12) = 149.27
+mediana(18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12) = 18.00
