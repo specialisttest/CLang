@@ -43,6 +43,12 @@ double bank_round(double x) {
 // round2(1.534, 2) = 1.53
 // round2(1.539, 2) = 1.54
 
+double round2(double x, int n) {
+	double p = pow(10, n);
+	return round(x*p)/p;
+}
+
+
 // n! = 1*2*3* ..(n-1)*n
 // 0! = 1
 // n! = n * (n-1)!
@@ -165,6 +171,10 @@ int main(int argc, char *argv[]) {
 		averagen(15, 18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12));
 	printf("mediana(18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12) = %.2f\n", 
 		mediana(15, 18, 15, 17, 3, 21, 1000, 18, 30, 15, 17, 1000, 21, 18, 34, 12));
+	
+	printf("round2(1.534, 2)  = %.4f\n", round2(1.534, 2)); // 1.53
+	printf("round2(1.539, 2)  = %.4f\n", round2(1.539, 2)); // 1.54
+
 	
 	return 0;
 }
